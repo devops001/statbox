@@ -1,0 +1,24 @@
+<head>
+  <title>statbox</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>statbox</h1>
+    </header>
+
+    <table id="messages">
+      {{#each messages}}
+        {{> message}}
+      {{/each}}
+    </table>
+
+  </div><!-- container -->
+</body>
+
+<template name="message">
+  <tr><td>{{createdAt}}</td><td>{{host}}</td><td>{{text}}</td><td>{{assignedTo}}</td></tr>
+</template>
+
