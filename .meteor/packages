@@ -8,3 +8,5 @@ meteor-platform
 autopublish
 insecure
 mrt:moment
+accounts-ui
+accounts-password
