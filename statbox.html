@@ -20,13 +20,18 @@
       {{/each}}
     </table>
 
+    {{#if selectedMessage}}
+      {{#with selectedMessage}}
+        {{> messageDetail}}
+      {{/with}}
+    {{/if}}
 
   </div><!-- container -->
 </body>
 
 <template name="message">
    {{#if odd}} 
-     <tr class="colored_bg">
+     <tr class="colored_bg selectable">
        <td>{{formatTime createdAt}}</td>
        <td>{{sentFrom}}</td>
        <td>{{text}}</td>
@@ -35,7 +40,7 @@
        <td><button class="delete shadow">&times;</button></td>
     </tr>
    {{else}} 
-     <tr>
+     <tr class="selectable">
        <td>{{formatTime createdAt}}</td>
        <td>{{sentFrom}}</td>
        <td>{{text}}</td>
@@ -44,5 +49,15 @@
        <td><button class="delete shadow">&times;</button></td>
      </tr>
    {{/if}}
+</template>
+
+<template name="messageDetail">
+  <div>
+    <p>{{createdAt}}</p>
+    <p>{{sentFrom}}</p>
+    <p>{{text}}</p>
+    <p>{{status}}</p>
+    <p>{{assignedTo}}</p>
+  </div>
 </template>
 

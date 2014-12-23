@@ -25,6 +25,9 @@ if (Meteor.isClient) {
         list.push(m);
       });
       return list;
+    },
+    selectedMessage: function() {
+      return Messages.findOne({selected: true});
     }
   });
 
@@ -43,7 +46,17 @@ if (Meteor.isClient) {
     },
     "click .delete": function(event) {
       Messages.remove(this._id);
-    }
+      return false;
+    },
+    "click .selectable": function(event) {
+      console.log("clicked on: "+ event.target);
+      var prev = Messages.findOne({selected: true});
+      if (prev) {
+        Messages.update(prev._id, {$set: {selected: false}});
+      }
+      Messages.update(this._id, {$set: {selected: true}});
+      return false;
+    }   
   });
 
   Template.message.helpers({
