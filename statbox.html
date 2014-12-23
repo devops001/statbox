@@ -32,7 +32,7 @@
      <tr class="message colored_bg">
        <td>{{formatTime createdAt}}</td>
        <td>{{sentFrom}}</td>
-       <td>{{text}}</td>
+       <td>{{truncate text "20"}}</td>
        <td>{{status}}</td>
        <td>{{assignedTo}}</td>
        <td><button class="delete shadow">&times;</button></td>
@@ -41,7 +41,7 @@
      <tr class="message">
        <td>{{formatTime createdAt}}</td>
        <td>{{sentFrom}}</td>
-       <td>{{text}}</td>
+       <td>{{truncate text "20"}}</td>
        <td>{{status}}</td>
        <td>{{assignedTo}}</td>
        <td><button class="delete shadow">&times;</button></td>

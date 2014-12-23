@@ -13,6 +13,13 @@ if (Meteor.isClient) {
       return moment(date).format('MM/DD hh:mm:ss')
     }
   });
+  UI.registerHelper('truncate', function(text, length, options) {
+    if (text.length <= length) {
+      return text;
+    } else {
+      return text.substring(text, length) + "...";
+    }
+  });
 
   Accounts.ui.config({ passwordSignupFields: "USERNAME_ONLY" });
 
