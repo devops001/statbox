@@ -27,7 +27,7 @@ if (Meteor.isClient) {
       return list;
     },
     selectedMessage: function() {
-      return Messages.findOne({selected: true});
+      return Session.get("selectedMessage");
     }
   });
 
@@ -48,13 +48,8 @@ if (Meteor.isClient) {
       Messages.remove(this._id);
       return false;
     },
-    "click .selectable": function(event) {
-      console.log("clicked on: "+ event.target);
-      var prev = Messages.findOne({selected: true});
-      if (prev) {
-        Messages.update(prev._id, {$set: {selected: false}});
-      }
-      Messages.update(this._id, {$set: {selected: true}});
+    "click .message": function(event) {
+      Session.set("selectedMessage", Messages.findOne(this._id));
       return false;
     }   
   });
@@ -66,6 +61,9 @@ if (Meteor.isClient) {
     odd: function() {
       return !(this.position % 2 === 0);
     }
+  });
+
+  Template.message.events({
   });
 
 }
