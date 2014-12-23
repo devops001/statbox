@@ -14,6 +14,8 @@ if (Meteor.isClient) {
     }
   });
 
+  Accounts.ui.config({ passwordSignupFields: "USERNAME_ONLY" });
+
   Template.body.helpers({
     messages: function() {
       var list = [];
