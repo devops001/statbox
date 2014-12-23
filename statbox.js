@@ -28,6 +28,21 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.body.events({
+    "submit .new-message": function(event) {
+      var msg = event.target.message.value;
+      Messages.insert({
+        createdAt:  new Date(),
+        text:       msg,
+        sentFrom:   Meteor.user().username,
+        status:     "open",
+        assignedTo: "nobody"
+      });
+      event.target.message.value = "";
+      return false;
+    }
+  });
+
   Template.message.helpers({
     even: function() {
       return (this.position % 2 === 0);
@@ -36,6 +51,7 @@ if (Meteor.isClient) {
       return !(this.position % 2 === 0);
     }
   });
+
 }
 
 
@@ -47,3 +63,10 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
   });
 }
+
+
+
+
+
+
+
