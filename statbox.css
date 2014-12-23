@@ -18,6 +18,7 @@ body {
   font-size: 14px;
 }
 
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -103,6 +104,10 @@ ul {
   font-size: 1em;
   border: none;
   position: relative;
+  -moz-box-shadow:    1px 1px 1px 2px #ccc;
+  -webkit-box-shadow: 1px 1px 1px 2px #ccc;
+  box-shadow:         1px 1px 1px 2px #ccc;
+  cursor: pointer;
 }
 
 li {

@@ -40,6 +40,9 @@ if (Meteor.isClient) {
       });
       event.target.message.value = "";
       return false;
+    },
+    "click .delete": function(event) {
+      Messages.remove(this._id);
     }
   });
 

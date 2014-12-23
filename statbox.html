@@ -14,7 +14,7 @@
     </header>
 
     <table id="messages">
-      <tr><th>Created At</th><th>From</th><th>Message</th><th>Status</th><th>Assigned To</th></tr>
+      <tr><th>Created At</th><th>From</th><th>Message</th><th>Status</th><th>Assigned To</th><th></th></tr>
       {{#each messages}}
         {{> message}}
       {{/each}}
@@ -27,11 +27,21 @@
 <template name="message">
    {{#if odd}} 
      <tr class="colored_bg">
-       <td>{{formatTime createdAt}}</td><td>{{sentFrom}}</td><td>{{text}}</td><td>{{status}}</td><td>{{assignedTo}}</td>
+       <td>{{formatTime createdAt}}</td>
+       <td>{{sentFrom}}</td>
+       <td>{{text}}</td>
+       <td>{{status}}</td>
+       <td>{{assignedTo}}</td>
+       <td><button class="delete shadow">&times;</button></td>
     </tr>
    {{else}} 
      <tr>
-       <td>{{formatTime createdAt}}</td><td>{{sentFrom}}</td><td>{{text}}</td><td>{{status}}</td><td>{{assignedTo}}</td>
+       <td>{{formatTime createdAt}}</td>
+       <td>{{sentFrom}}</td>
+       <td>{{text}}</td>
+       <td>{{status}}</td>
+       <td>{{assignedTo}}</td>
+       <td><button class="delete shadow">&times;</button></td>
      </tr>
    {{/if}}
 </template>
