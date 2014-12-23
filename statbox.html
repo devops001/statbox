@@ -35,7 +35,7 @@
        <td>{{truncate text "20"}}</td>
        <td>{{status}}</td>
        <td>{{assignedTo}}</td>
-       <td><button class="delete shadow">&times;</button></td>
+       <td><button class="delete">&times;</button></td>
     </tr>
    {{else}} 
      <tr class="message">
@@ -44,19 +44,21 @@
        <td>{{truncate text "20"}}</td>
        <td>{{status}}</td>
        <td>{{assignedTo}}</td>
-       <td><button class="delete shadow">&times;</button></td>
+       <td><button class="delete">&times;</button></td>
      </tr>
    {{/if}}
 </template>
 
 <template name="messageDetail">
-  <p>Message Detail:</p>
-  <div>
-    <p>{{createdAt}}</p>
-    <p>{{sentFrom}}</p>
-    <p>{{text}}</p>
-    <p>{{status}}</p>
-    <p>{{assignedTo}}</p>
+  <div class="messageDetail">
+    <h3>Message Detail:</h3>
+    <table>
+      <tr><th>Created At:</th><td>{{formatTime createdAt}}</td></tr>
+      <tr><th>Sent From:</th><td>{{sentFrom}}</td></tr>
+      <tr><th>Text:</th><td>{{text}}</td></tr>
+      <tr><th>Status:</th><td>{{status}}</td></tr>
+      <tr><th>Assigned To:</th><td>{{assignedTo}}</td></tr>
+    </table>
   </div>
 </template>
 
