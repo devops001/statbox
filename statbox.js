@@ -1,23 +1,47 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
+Messages = new Mongo.Collection("messages");
+
+
+/**************************
+ * Client:
+ **************************/
+
+if (Meteor.isClient) {
+
+  UI.registerHelper('formatTime', function(date, options) {
+    if (date) {
+      return moment(date).format('MM/DD hh:mm:ss')
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set("counter", Session.get("counter") + 1);
+  Template.body.helpers({
+    messages: function() {
+      var list = [];
+      var i    = 0;
+      Messages.find().forEach(function(m) {
+        m.position = i++;
+        list.push(m);
+      });
+      return list;
+    }
+  });
+
+  Template.message.helpers({
+    even: function() {
+      return (this.position % 2 === 0);
+    },
+    odd: function() {
+      return !(this.position % 2 === 0);
     }
   });
 }
 
+
+/**************************
+ * Server:
+ **************************/
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
   });
 }

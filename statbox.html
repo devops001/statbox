@@ -10,15 +10,25 @@
     </header>
 
     <table id="messages">
+      <tr><th>Created At</th><th>From</th><th>Message</th><th>Status</th><th>Assigned To</th></tr>
       {{#each messages}}
-        {{> message}}
+      {{> message}}
       {{/each}}
     </table>
+
 
   </div><!-- container -->
 </body>
 
 <template name="message">
-  <tr><td>{{createdAt}}</td><td>{{host}}</td><td>{{text}}</td><td>{{assignedTo}}</td></tr>
+   {{#if odd}} 
+     <tr class="colored_bg">
+       <td>{{formatTime createdAt}}</td><td>{{sentFrom}}</td><td>{{text}}</td><td>{{status}}</td><td>{{assignedTo}}</td>
+    </tr>
+   {{else}} 
+     <tr>
+       <td>{{formatTime createdAt}}</td><td>{{sentFrom}}</td><td>{{text}}</td><td>{{status}}</td><td>{{assignedTo}}</td>
+     </tr>
+   {{/if}}
 </template>
 
